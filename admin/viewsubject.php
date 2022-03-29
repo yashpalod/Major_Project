@@ -65,6 +65,7 @@ include('connection.php');
                                             <th>Sr No.</th>
                                             <th>Subject Name</th>
                                             <th colspan="2">Manage</th>
+                                            <th>Add Ques</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -78,6 +79,7 @@ include('connection.php');
                                             echo "<td>" . $row['subname'] . "</td>";
                                             echo "<td><a href='editsubject.php?sid=" . $row['sid'] . "' >  Edit</a></td>";
                                             echo "<td><a href='deletesubject.php?sid=" . $row['sid'] . "' >  Delete</a></td>";
+                                            echo "<td><a href='addquestion1.php?sid=" . $row['sid'] . "'>Add</a></td>";
                                             echo "</tr>";
                                             $i++;
                                         }

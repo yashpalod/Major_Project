@@ -12,7 +12,6 @@ if (isset($_POST['submit'])) {
     $choice3 = $_POST['choice3'];
     $choice4 = $_POST['choice4'];
 
-
     $sql = "insert into quiz values('','$sid','$question_text','$choice1','$choice2','$choice3','$choice4','$correct_choice')";
     $res = mysqli_query($db_conn, $sql);
     if (mysqli_affected_rows($db_conn)) {

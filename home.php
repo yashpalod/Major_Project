@@ -32,7 +32,7 @@ include('db/connection.php');
                 echo "<div class='card' style='width: 18rem;'>";
                 echo "<div class='card-body'>";
                 echo "<h5 class='card-title'>" . $row['subname'] . "</h5>";
-                echo "<a href='quiz1.php?sid=" . $row['sid'] . "' class='btn btn-sm btn-primary'>Enter</a>";
+                echo "<a href='quiz2.php?sid=" . $row['sid'] . "' class='btn btn-sm btn-primary'>Enter</a>";
                 echo "</div>";
                 echo "</div>";
                 echo "</div>";

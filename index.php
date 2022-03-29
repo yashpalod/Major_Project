@@ -20,9 +20,11 @@ include('db/connection.php');
     include('menu.php');
     ?>
 
-    <div class="container">
-        <h3>Welcome to Our Online Quiz</h3>
-        <a href='demoQuiz.php' class='btn btn-sm btn-primary'>Demo Quiz</a>
+    <div class="container mt-4">
+        <center>
+            <h3>Welcome to Our Online Quiz</h3>
+            <a href='demoQuiz.php' class='btn btn-sm btn-primary'>Demo Quiz</a>
+        </center>
     </div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
