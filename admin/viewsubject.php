@@ -77,9 +77,9 @@ include('connection.php');
                                             echo "<tr>";
                                             echo "<td>$i</td>";
                                             echo "<td>" . $row['subname'] . "</td>";
-                                            echo "<td><a href='editsubject.php?sid=" . $row['sid'] . "' >  Edit</a></td>";
-                                            echo "<td><a href='deletesubject.php?sid=" . $row['sid'] . "' >  Delete</a></td>";
-                                            echo "<td><a href='addquestion1.php?sid=" . $row['sid'] . "'>Add</a></td>";
+                                            echo "<td><a href='editsubject.php?sid=" . $row['sid'] . "' >  <i class='fas fa-pen fa-2x text-gray-500'></i></a></td>";
+                                            echo "<td><a href='deletesubject.php?sid=" . $row['sid'] . "' > <i class='fas fa-trash fa-2x text-gray-500'></i></a></td>";
+                                            echo "<td><a href='addquestion1.php?sid=" . $row['sid'] . "'><i class='fas fa-plus fa-2x text-gray-600'></i></a></td>";
                                             echo "</tr>";
                                             $i++;
                                         }

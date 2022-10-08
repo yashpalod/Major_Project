@@ -1,6 +1,14 @@
 <?php
 include('isvalid.php');
 include('connection.php');
+
+$sql = "select * from subject";
+$res = mysqli_query($db_conn, $sql);
+$row = mysqli_num_rows($res);
+
+$sql1 = "select * from users";
+$res1 = mysqli_query($db_conn, $sql1);
+$row1 = mysqli_num_rows($res1);
 ?>
 
 <!DOCTYPE html>
@@ -66,11 +74,11 @@ include('connection.php');
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                                Total Subjects</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $row; ?></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            <i class="fas fa-book fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -84,11 +92,11 @@ include('connection.php');
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Earnings (Annual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                                Total Students</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $row1; ?></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>

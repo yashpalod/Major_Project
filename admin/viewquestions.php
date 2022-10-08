@@ -89,8 +89,8 @@ include('connection.php');
                                             echo "<td>" . $row['opt3'] . "</td>";
                                             echo "<td>" . $row['opt4'] . "</td>";
                                             echo "<td>" . $row['corr'] . "</td>";
-                                            echo "<td><a href='editquestion.php?qid=" . $row['qid'] . "' >  Edit</a></td>";
-                                            echo "<td><a href='deletequestion.php?qid=" . $row['qid'] . "' >  Delete</a></td>";
+                                            echo "<td><a href='editquestion.php?qid=" . $row['qid'] . "' > <i class='fas fa-pen fa-2x text-gray-600'></i></a></td>";
+                                            echo "<td><a href='deletequestion.php?qid=" . $row['qid'] . "' > <i class='fas fa-trash fa-2x text-gray-600'></i></a></td>";
                                             echo "</tr>";
                                             $i++;
                                         }

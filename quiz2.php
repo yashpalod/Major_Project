@@ -3,8 +3,12 @@ include('isvalid.php');
 include('db/connection.php');
 if (isset($_GET['sid'])) {
     $sid = $_GET['sid'];
-    // echo $sid;
+    //echo $sid;
 }
+// if (isset($_GET['testid'])) {
+//     $testid = $_GET['testid'];
+//     echo $testid;
+// }
 ?>
 
 <!doctype html>
@@ -29,7 +33,7 @@ if (isset($_GET['sid'])) {
     <div class="container">
         <div class="col-lg-8 m-auto d-block">
             <div class="card mt-4">
-                <h3 class="text-center card-header">Welcome</h3>
+                <h3 class="text-center card-header">Welcome <?php echo $_SESSION['USNM']; ?></h3>
             </div><br>
             <form id="myform" action="check2.php" method="POST">
 
@@ -38,35 +42,39 @@ if (isset($_GET['sid'])) {
                 $sql = "SELECT * FROM questions2 WHERE sid=$sid order by RAND() LIMIT 4";
                 $qry = mysqli_query($db_conn, $sql);
                 $num_row = mysqli_num_rows($qry);
-                // if ($num_row == 0) {
-                //     echo "Sorry";
-                // } else {
-                $j = 1;
-                while ($row = mysqli_fetch_array($qry)) {
+                if ($num_row == 0) {
+                    echo "Sorry No Questions Available";
+                } else {
+                    $j = 1;
+                    while ($row = mysqli_fetch_array($qry)) {
                 ?>
-                    <input type="hidden" value="<?php echo $sid ?>" name="subid">
-                    <div class="card">
-                        <h4 class="card-header"><?php echo "Q." . $j . " " . $row['question_text']; ?></h4>
-                        <?php
-                        $sql1 = "SELECT * FROM answers2 WHERE ques_id= $row[id]";
-                        $qry1 = mysqli_query($db_conn, $sql1);
+                        <input type="text" value="<?php echo $row['id'] ?>" name="qid[<?php echo $row['id'] ?>]">
+                        <input type="hidden" value="<?php echo $sid ?>" name="subid">
+                        <div class="card">
+                            <h4 class="card-header"><?php echo "Q." . $j . " " . $row['question_text']; ?></h4>
+                            <?php
+                            $sql1 = "SELECT * FROM answers2 WHERE ques_id= $row[id]";
+                            $qry1 = mysqli_query($db_conn, $sql1);
 
-                        while ($row1 = mysqli_fetch_array($qry1)) {
+                            while ($row1 = mysqli_fetch_array($qry1)) {
+
+                            ?>
+                                <div class="card-body">
+                                    <input type="radio" name="quizcheck[<?php echo $row1['ques_id'] ?>]" value="<?php echo $row1['id'];  ?>"> <?php echo $row1['coption']; ?>
+                                </div>
+
+                        <?php
+                            }
+                            $j++;
+                        }
+
                         ?>
-                            <div class="card-body">
-                                <input type="radio" name="quizcheck[<?php echo $row1['ques_id'] ?>]" value="<?php echo $row1['id'];  ?>"> <?php echo $row1['coption']; ?>
-                            </div>
 
                     <?php
-                        }
-                        $j++;
-                    }
+                }
 
                     ?>
                     <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-success m-auto d-block">
-                    <?php
-                    //}
-                    ?>
             </form>
         </div>
     </div>
@@ -106,6 +114,10 @@ if (isset($_GET['sid'])) {
             }
         }
         setTimeout("CheckTime()", 1000);
+
+        window.onbeforeunload = function() {
+            return "Data will be lost if you leave the page, are you sure?";
+        };
     </script>
 
 </body>
